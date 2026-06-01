@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>CA NITIN MURARKA TRADING | Stock Market Telegram Channel</title>
     
-    <!-- Meta Pixel Code (Facebook Pixel) - Pixel ID: 1051239007234905 -->
+    <!-- Facebook Pixel Code - Official Tracking -->
     <script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -15,14 +15,25 @@
         t.src=v;s=b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
+        
+        // Initialize Pixel with the correct ID (as requested)
         fbq('init', '1051239007234905');
         fbq('track', 'PageView');
+        
+        // Additional PageView Meta Data for better analytics
+        fbq('track', 'PageView', {
+            page_type: 'Telegram_Subscription_Landing',
+            creator: 'CA_NITIN_MURARKA',
+            niche: 'Stock_Market_Options_Trading',
+            button_theme: 'Red_Gradient',
+            mobile_optimized: 'true'
+        });
     </script>
     <noscript>
-        <img height="1" width="1" style="display:none"
-        src="https://www.facebook.com/tr?id=1051239007234905&ev=PageView&noscript=1"/>
+        <img height="1" width="1" style="display:none" 
+             src="https://www.facebook.com/tr?id=1051239007234905&ev=PageView&noscript=1"/>
     </noscript>
-    <!-- End Meta Pixel Code -->
+    <!-- End Facebook Pixel Code -->
     
     <style>
         * {
@@ -108,7 +119,7 @@
             font-weight: 600;
         }
 
-        /* BUTTON - RED COLOR (as requested) */
+        /* BUTTON - RED COLOR (as requested) with smooth animations */
         .join-btn {
             display: flex;
             align-items: center;
@@ -163,7 +174,7 @@
             text-align: center;
         }
 
-        /* Points section - Updated Stock Market Lines */
+        /* Points Section - Updated Stock Market Lines */
         .points-section {
             background: #0d0d0d;
             border-radius: 28px;
@@ -269,13 +280,18 @@
                 max-width: 460px;
             }
         }
+        
+        /* loading shimmer effect for image */
+        .logo-circle img {
+            transition: opacity 0.3s ease;
+        }
     </style>
 </head>
 <body>
 
 <div class="card">
     <div class="content">
-        <!-- Logo + Channel Name - Same as CA NITIN -->
+        <!-- Logo + Channel Name - Official CA Nitin Murarka -->
         <div class="channel-badge">
             <div class="logo-circle">
                 <img src="https://karanmetalabe.com/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-14-at-2.23.14-PM.jpeg" alt="CA NITIN MURARKA TRADING">
@@ -286,7 +302,7 @@
             </div>
         </div>
 
-        <!-- ✅ SUBSCRIBE BUTTON 1 - TOP (RED COLOR) -->
+        <!-- ✅ SUBSCRIBE BUTTON 1 - TOP (RED COLOR) with pixel tracking -->
         <div class="top-button">
             <a href="https://t.me/+EwxVjw15i7ZkMzQ1" target="_blank" rel="noopener noreferrer" class="join-btn" id="subscribeTopBtn">
                 🔔 SUBSCRIBE NOW - JOIN TELEGRAM 🚀
@@ -341,7 +357,7 @@
             </div>
         </div>
 
-        <!-- ✅ SUBSCRIBE BUTTON 2 - BOTTOM (RED COLOR) -->
+        <!-- ✅ SUBSCRIBE BUTTON 2 - BOTTOM (RED COLOR) with pixel tracking -->
         <div class="bottom-button">
             <a href="https://t.me/+EwxVjw15i7ZkMzQ1" target="_blank" rel="noopener noreferrer" class="join-btn" id="subscribeBottomBtn">
                 ⚡ SUBSCRIBE NOW & GET FREE DAILY PROFIT CALLS ⚡
@@ -366,163 +382,266 @@
 
 <!-- 
     ============================================================
-    COMPLETE FACEBOOK PIXEL SUBSCRIBE BUTTON TRACKING
+    COMPLETE FACEBOOK PIXEL SUBSCRIBE BUTTON TRACKING - FINAL CODE
     ============================================================
     Tracks both Subscribe buttons with Facebook Pixel 'Lead' event
     Pixel ID: 1051239007234905
     Telegram Link: https://t.me/+EwxVjw15i7ZkMzQ1
+    Enhanced: Multi-event tracking, error handling & validation
 -->
 <script>
     (function() {
-        // Get both subscribe buttons by their unique IDs
-        const topSubscribeBtn = document.getElementById('subscribeTopBtn');
-        const bottomSubscribeBtn = document.getElementById('subscribeBottomBtn');
-        
-        // Correct Telegram channel link (as requested)
-        const telegramLink = "https://t.me/+EwxVjw15i7ZkMzQ1";
-        
-        // Ensure both buttons have the correct href
-        if (topSubscribeBtn) {
-            topSubscribeBtn.href = telegramLink;
-        }
-        if (bottomSubscribeBtn) {
-            bottomSubscribeBtn.href = telegramLink;
+        // Ensure the DOM is fully loaded before attaching events
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPixelTracking);
+        } else {
+            initPixelTracking();
         }
         
-        /**
-         * Custom Subscribe Tracking Function
-         * Triggers Facebook Pixel 'Lead' event with detailed parameters
-         */
-        function fireSubscribeEvent(buttonElement, clickEvent) {
-            // Determine which button was clicked
-            let buttonPosition = 'unknown';
-            let buttonText = '';
+        function initPixelTracking() {
+            // Get both subscribe buttons by their unique IDs
+            const topSubscribeBtn = document.getElementById('subscribeTopBtn');
+            const bottomSubscribeBtn = document.getElementById('subscribeBottomBtn');
             
-            if (buttonElement && buttonElement.id === 'subscribeTopBtn') {
-                buttonPosition = 'Top Header Button';
-                buttonText = 'SUBSCRIBE NOW - JOIN TELEGRAM';
-            } else if (buttonElement && buttonElement.id === 'subscribeBottomBtn') {
-                buttonPosition = 'Bottom CTA Button';
-                buttonText = 'SUBSCRIBE NOW & GET FREE DAILY PROFIT CALLS';
-            } else {
-                buttonPosition = 'Subscribe Button';
-                buttonText = 'Subscribe to Telegram Channel';
+            // Correct Telegram channel link (as requested - permanent invite)
+            const TELEGRAM_LINK = "https://t.me/+EwxVjw15i7ZkMzQ1";
+            const PIXEL_ID = "1051239007234905";
+            
+            // Helper: verify and fix href attributes for both buttons
+            function validateTelegramLinks() {
+                if (topSubscribeBtn && topSubscribeBtn.getAttribute('href') !== TELEGRAM_LINK) {
+                    topSubscribeBtn.setAttribute('href', TELEGRAM_LINK);
+                    console.log("✅ Fixed top button Telegram link");
+                }
+                if (bottomSubscribeBtn && bottomSubscribeBtn.getAttribute('href') !== TELEGRAM_LINK) {
+                    bottomSubscribeBtn.setAttribute('href', TELEGRAM_LINK);
+                    console.log("✅ Fixed bottom button Telegram link");
+                }
+                
+                // Also ensure all telegram links have target blank
+                const allTelegramLinks = document.querySelectorAll('a[href*="t.me"]');
+                allTelegramLinks.forEach(link => {
+                    if (!link.getAttribute('target')) {
+                        link.setAttribute('target', '_blank');
+                    }
+                    link.setAttribute('rel', 'noopener noreferrer');
+                });
             }
             
-            // Check if Facebook Pixel (fbq) is available and ready
+            // Advanced tracking function for Pixel events
+            function fireSubscribeTracking(buttonElement, clickEvent) {
+                // Determine button location & metadata
+                let buttonPosition = 'unknown';
+                let buttonTextContent = '';
+                
+                if (buttonElement && buttonElement.id === 'subscribeTopBtn') {
+                    buttonPosition = 'Top_Header_CTA';
+                    buttonTextContent = 'SUBSCRIBE NOW - JOIN TELEGRAM';
+                } else if (buttonElement && buttonElement.id === 'subscribeBottomBtn') {
+                    buttonPosition = 'Bottom_Footer_CTA';
+                    buttonTextContent = 'SUBSCRIBE NOW & GET FREE DAILY PROFIT CALLS';
+                } else {
+                    buttonPosition = 'Subscribe_Button_Generic';
+                    buttonTextContent = 'Join Telegram Channel';
+                }
+                
+                // Create unique timestamp for event deduplication & analytics
+                const eventTimestamp = new Date().toISOString();
+                const sessionId = Math.random().toString(36).substring(2, 12);
+                
+                // Check if Facebook Pixel (fbq) is available and ready
+                if (typeof fbq === 'function') {
+                    try {
+                        // Primary conversion: Track 'Lead' event for subscription (standard event)
+                        fbq('track', 'Lead', {
+                            content_name: 'CA_NITIN_MURARKA_Telegram_Subscribe',
+                            content_category: 'Stock_Market_Subscription',
+                            button_location: buttonPosition,
+                            cta_text: buttonTextContent,
+                            telegram_invite_link: 't.me/+EwxVjw15i7ZkMzQ1',
+                            currency: 'INR',
+                            value: 0.01,
+                            session_id: sessionId,
+                            timestamp: eventTimestamp,
+                            pixel_id: PIXEL_ID
+                        });
+                        
+                        // Secondary tracking: Custom Subscribe event for deeper insights
+                        fbq('trackCustom', 'SubscribeButtonClick', {
+                            event_source: 'CA_NITIN_MURARKA_LandingPage_V2',
+                            button_position: buttonPosition,
+                            button_color: 'Red_Gradient',
+                            click_timestamp: eventTimestamp,
+                            channel_type: 'Telegram',
+                            pixel_fire_version: '2.0',
+                            device_category: window.innerWidth <= 768 ? 'mobile' : 'desktop'
+                        });
+                        
+                        // Additional: track 'Contact' event for high-intent subscribers
+                        fbq('track', 'Contact', {
+                            contact_method: 'Telegram_Channel_Join',
+                            button_id: buttonElement.id,
+                            page_section: buttonPosition.includes('Top') ? 'Hero' : 'Footer'
+                        });
+                        
+                        console.log(`✅ Facebook Pixel Events Tracked Successfully:`);
+                        console.log(`   - Lead Event (Pixel: ${PIXEL_ID})`);
+                        console.log(`   - SubscribeCustom Event`);
+                        console.log(`   - Contact Event`);
+                        console.log(`   🎯 Button: ${buttonPosition}`);
+                        console.log(`   🔗 Telegram: ${TELEGRAM_LINK}`);
+                    } catch (err) {
+                        console.error('⚠️ Error firing Facebook Pixel events:', err);
+                    }
+                } else {
+                    console.warn('⚠️ Facebook Pixel (fbq) not loaded. Event not tracked. Check Pixel ID 1051239007234905');
+                    // Fallback: store event in dataLayer for debugging
+                    if (window.dataLayer) {
+                        window.dataLayer.push({
+                            event: 'fb_pixel_missing',
+                            button_position: buttonPosition,
+                            telegram_link: TELEGRAM_LINK
+                        });
+                    }
+                }
+                
+                // Optional: Send custom analytics to console group for debugging
+                if (window.console && window.console.group) {
+                    console.group('📊 CA Nitin Murarka Pixel Analytics');
+                    console.log(`Button Clicked: ${buttonPosition}`);
+                    console.log(`Pixel ID: ${PIXEL_ID}`);
+                    console.log(`Telegram Invite: ${TELEGRAM_LINK}`);
+                    console.log(`Time: ${eventTimestamp}`);
+                    console.groupEnd();
+                }
+                
+                return true; // allow default navigation
+            }
+            
+            // Attach event listeners with duplicate protection and debouncing
+            function attachSecureTracking(button, buttonName) {
+                if (!button) {
+                    console.warn(`${buttonName} not found in DOM - ensure element exists`);
+                    return;
+                }
+                
+                let isProcessing = false;
+                let lastClickTime = 0;
+                const DEBOUNCE_MS = 600;
+                
+                // Remove existing inline handlers to avoid conflicts
+                button.removeAttribute('onclick');
+                
+                // Add modern click listener with tracking
+                button.addEventListener('click', function(event) {
+                    const now = Date.now();
+                    // Debounce to prevent rapid double-tracking
+                    if (isProcessing || (now - lastClickTime) < DEBOUNCE_MS) {
+                        console.log('🛡️ Duplicate click prevented / debounced');
+                        return;
+                    }
+                    
+                    isProcessing = true;
+                    lastClickTime = now;
+                    
+                    // Fire the tracking pixel (Lead + Custom Events)
+                    fireSubscribeTracking(button, event);
+                    
+                    // Small delay to ensure pixel fires before redirect (best practice)
+                    // But we don't block navigation; just ensure tracking executes.
+                    setTimeout(() => {
+                        isProcessing = false;
+                    }, DEBOUNCE_MS);
+                });
+                
+                console.log(`✅ Tracking attached to: ${buttonName}`);
+            }
+            
+            // Also track when any Telegram link is clicked (extra layer)
+            function attachGlobalTelegramTracking() {
+                const allTelegramAnchors = document.querySelectorAll('a[href*="t.me"]');
+                allTelegramAnchors.forEach(anchor => {
+                    // Avoid double tracking if already processed
+                    if (anchor.hasAttribute('data-tracking-attached')) return;
+                    
+                    anchor.setAttribute('data-tracking-attached', 'true');
+                    anchor.addEventListener('click', function(e) {
+                        // If the clicked element is already one of our main buttons, we don't double track
+                        if (anchor.id === 'subscribeTopBtn' || anchor.id === 'subscribeBottomBtn') {
+                            return; // handled separately
+                        }
+                        
+                        if (typeof fbq === 'function') {
+                            fbq('track', 'Lead', {
+                                content_name: 'Generic_Telegram_Click',
+                                source_element: anchor.innerText,
+                                pixel_id: PIXEL_ID
+                            });
+                            console.log('✅ Additional Telegram link tracked globally');
+                        }
+                    });
+                });
+            }
+            
+            // Initialize everything
+            validateTelegramLinks();
+            attachSecureTracking(topSubscribeBtn, 'Top Subscribe Button');
+            attachSecureTracking(bottomSubscribeBtn, 'Bottom Subscribe Button');
+            attachGlobalTelegramTracking();
+            
+            // Enhanced PageView tracking with additional metadata after load
             if (typeof fbq === 'function') {
-                // Track 'Lead' event - standard conversion for subscriptions/leads
-                fbq('track', 'Lead', {
-                    content_name: 'CA_NITIN_MURARKA_Telegram_Subscribe',
-                    content_category: 'Stock_Market_Subscription',
-                    button_location: buttonPosition,
-                    cta_text: buttonText,
-                    telegram_link: 't.me/+EwxVjw15i7ZkMzQ1',
-                    currency: 'INR',
-                    value: 0.01
+                fbq('track', 'PageView', {
+                    page_engagement: 'full_landing',
+                    components_visible: 'header,points_section,dual_cta',
+                    tg_invite_displayed: TELEGRAM_LINK,
+                    button_style: 'Red_Gradient',
+                    timestamp_load: new Date().toISOString()
                 });
-                
-                // Also send custom 'Subscribe' event for additional granularity
-                fbq('trackCustom', 'SubscribeButtonClick', {
-                    event_source: 'CA_NITIN_MURARKA_LandingPage',
-                    button_position: buttonPosition,
-                    timestamp: new Date().toISOString(),
-                    channel: 'Telegram',
-                    pixel_id: '1051239007234905',
-                    button_color: 'Red'
-                });
-                
-                console.log(`✅ Facebook Pixel Event Tracked: Lead + SubscribeCustom (${buttonPosition})`);
-                console.log(`🎯 Pixel ID: 1051239007234905 | Telegram: t.me/+EwxVjw15i7ZkMzQ1`);
+                console.log(`📄 Enhanced PageView tracked | Pixel: ${PIXEL_ID}`);
+                console.log(`🔥 CA NITIN MURARKA TRADING | Facebook Pixel Subscribe Tracking Active 🔥`);
+                console.log(`✅ Both "SUBSCRIBE NOW" buttons will fire: Lead, SubscribeCustom, Contact events`);
+                console.log(`✅ Telegram Link: ${TELEGRAM_LINK}`);
             } else {
-                console.warn('⚠️ Facebook Pixel (fbq) not loaded yet. Event not tracked.');
+                console.error('❌ Facebook Pixel not initialized. Check if pixel ID 1051239007234905 is correct.');
             }
-            
-            // Allow the default link behavior to continue (user will be redirected to Telegram)
-            return true;
-        }
-        
-        // Helper function to attach tracking with duplicate prevention
-        function attachSubscribeTracking(button, buttonName) {
-            if (!button) {
-                console.warn(`${buttonName} button not found in DOM`);
-                return;
-            }
-            
-            // Guard to prevent duplicate rapid-fire events
-            let isProcessing = false;
-            
-            // Remove any existing inline onclick handlers
-            button.removeAttribute('onclick');
-            
-            // Add click event listener for tracking
-            button.addEventListener('click', function(event) {
-                // Prevent duplicate rapid-fire events
-                if (isProcessing) return;
-                isProcessing = true;
-                
-                // Fire the subscribe tracking pixel
-                fireSubscribeEvent(button, event);
-                
-                // Reset guard after short delay
-                setTimeout(() => { isProcessing = false; }, 500);
-            });
-        }
-        
-        // Attach tracking to both subscribe buttons
-        attachSubscribeTracking(topSubscribeBtn, 'Top Subscribe Button');
-        attachSubscribeTracking(bottomSubscribeBtn, 'Bottom Subscribe Button');
-        
-        // Track enhanced PageView with additional context
-        if (typeof fbq === 'function') {
-            fbq('track', 'PageView', {
-                page_type: 'Telegram_Subscription_Landing',
-                creator: 'CA_NITIN_MURARKA',
-                niche: 'Stock_Market_Options_Trading',
-                telegram_channel: 'CA_NITIN_MURARKA_OFFICIAL',
-                pixel_id: '1051239007234905',
-                button_theme: 'Red',
-                pixel_version: '2.0'
-            });
-            console.log('📄 Enhanced PageView tracked');
-            console.log('🔘 Pixel ID: 1051239007234905');
-            console.log('🔗 Telegram Link: https://t.me/+EwxVjw15i7ZkMzQ1');
-        }
-        
-        // Console confirmation for developers
-        if (window.console) {
-            console.log('%c🔥 CA NITIN MURARKA TRADING | Facebook Pixel Subscribe Tracking Active 🔥', 'color: #ff5555; font-weight: bold; font-size: 12px;');
-            console.log('✅ Pixel ID: 1051239007234905');
-            console.log('✅ Telegram Link: https://t.me/+EwxVjw15i7ZkMzQ1');
-            console.log('✅ Both "SUBSCRIBE NOW" buttons will fire fbq Lead events');
-            console.log('✅ Button Color: Red');
-            console.log('✅ Tracking Events: PageView, Lead, SubscribeCustom');
         }
     })();
 </script>
 
-<!-- Additional security: Ensure all Telegram links open in new tab properly -->
+<!-- Secondary validation script: ensure that all Telegram joins work and meta pixel is healthy -->
 <script>
-    (function() {
-        // Ensure all Telegram links have proper attributes
-        const allTelegramLinks = document.querySelectorAll('a[href*="t.me"]');
-        allTelegramLinks.forEach(link => {
-            if (!link.getAttribute('target')) {
-                link.setAttribute('target', '_blank');
+    (function finalSecurityCheck() {
+        // Guarantee that any dynamic changes won't break telegram invite
+        window.addEventListener('load', function() {
+            const topBtn = document.getElementById('subscribeTopBtn');
+            const bottomBtn = document.getElementById('subscribeBottomBtn');
+            const expectedUrl = "https://t.me/+EwxVjw15i7ZkMzQ1";
+            
+            if (topBtn && topBtn.href !== expectedUrl) {
+                topBtn.href = expectedUrl;
             }
-            link.setAttribute('rel', 'noopener noreferrer');
+            if (bottomBtn && bottomBtn.href !== expectedUrl) {
+                bottomBtn.href = expectedUrl;
+            }
+            
+            // Add image fallback for logo in case image fails to load
+            const logoImg = document.querySelector('.logo-circle img');
+            if (logoImg) {
+                logoImg.onerror = function() {
+                    this.style.opacity = '0.7';
+                    this.alt = 'CA Nitin Murarka Logo';
+                };
+            }
+            
+            // Extra safety: Check fbq ready status
+            if (typeof fbq !== 'function') {
+                console.warn('⚠️ Facebook Pixel not available after page load. Check network or pixel initialization.');
+            } else {
+                console.log('✅ Facebook Pixel active and ready for conversions.');
+                fbq('trackCustom', 'PixelHealthCheck', { status: 'active', pixel_id: '1051239007234905' });
+            }
         });
-        
-        // Also verify both buttons have correct links
-        const topBtn = document.getElementById('subscribeTopBtn');
-        const bottomBtn = document.getElementById('subscribeBottomBtn');
-        
-        if (topBtn && topBtn.getAttribute('href') !== 'https://t.me/+EwxVjw15i7ZkMzQ1') {
-            topBtn.setAttribute('href', 'https://t.me/+EwxVjw15i7ZkMzQ1');
-        }
-        if (bottomBtn && bottomBtn.getAttribute('href') !== 'https://t.me/+EwxVjw15i7ZkMzQ1') {
-            bottomBtn.setAttribute('href', 'https://t.me/+EwxVjw15i7ZkMzQ1');
-        }
     })();
 </script>
 
