@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>CA NITIN MURARKA TRADING | Stock Market Telegram Channel</title>
+    <title>GUJARATI TRADER (JIGA BHAI) | Stock Market Telegram Channel</title>
     
     <!-- Facebook Pixel Code - Official Tracking with CORRECT ID: 1439827604565989 -->
     <script>
@@ -16,14 +16,14 @@
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
         
-        // Initialize Pixel with the CORRECT ID as provided by user
+        // Initialize Pixel with the CORRECT ID as provided
         fbq('init', '1439827604565989');
         fbq('track', 'PageView');
         
         // Enhanced PageView Meta Data for better analytics
         fbq('track', 'PageView', {
             page_type: 'Telegram_Subscription_Landing',
-            creator: 'CA_NITIN_MURARKA',
+            creator: 'GUJARATI_TRADER_JIGA_BHAI',
             niche: 'Stock_Market_Options_Trading',
             button_theme: 'Red_Gradient',
             mobile_optimized: 'true',
@@ -286,19 +286,44 @@
         .logo-circle img {
             transition: opacity 0.3s ease;
         }
+
+        /* Toast notification */
+        .toast-msg {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #e53935, #c62828);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            z-index: 1000;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            font-family: monospace;
+        }
+        .toast-msg.show {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
 
 <div class="card">
     <div class="content">
-        <!-- Logo + Channel Name - Official CA Nitin Murarka -->
+        <!-- Logo + Channel Name - GUJARATI TRADER (JIGA BHAI) -->
         <div class="channel-badge">
             <div class="logo-circle">
-                <img src="https://karanmetalabe.com/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-14-at-2.23.14-PM.jpeg" alt="CA NITIN MURARKA TRADING">
+                <img src="https://karanmetalabe.com/wp-content/uploads/2026/06/wordpress_1200x1200-1.jpg" alt="GUJARATI TRADER JIGA BHAI">
             </div>
             <div class="channel-name">
-                <h2>CA NITIN MURARKA<br>TRADING</h2>
+                <h2>GUJARATI TRADER<br>(JIGA BHAI)</h2>
                 <p>📈 Stock Market Expert <span class="verified">✓ OFFICIAL TG</span></p>
             </div>
         </div>
@@ -311,7 +336,7 @@
         </div>
 
         <div class="tagline">
-            🎯 Professional Options & Index Trading | Join Winning Journey 🚀
+            🎯 ગુજરાતી ટ્રેડર | Professional Options & Index Trading | Join Winning Journey 🚀
         </div>
 
         <!-- Points Section - Updated Stock Market Lines with New Features -->
@@ -345,7 +370,7 @@
             
             <div class="point-item">
                 <span class="point-icon">📈</span>
-                <span class="point-text"><strong>✅ Professional CA Guidance & Risk Management</strong></span>
+                <span class="point-text"><strong>✅ Professional Gujarati Trader Guidance & Risk Management</strong></span>
             </div>
             
             <div class="point-item">
@@ -376,10 +401,13 @@
 
         <hr />
         <div class="footer-text">
-            📍 CA NITIN MURARKA TRADING | Trade With Accuracy & Discipline
+            📍 GUJARATI TRADER (JIGA BHAI) | Trade With Accuracy & Discipline
         </div>
     </div>
 </div>
+
+<!-- Toast notification -->
+<div id="trackingToast" class="toast-msg">✅ Event tracked successfully!</div>
 
 <!-- 
     ============================================================
@@ -387,12 +415,23 @@
     ============================================================
     Tracks both Subscribe buttons with Facebook Pixel 'Lead' event
     ✅ CORRECT Pixel ID: 1439827604565989
+    ✅ Brand: GUJARATI TRADER (JIGA BHAI)
     ✅ Telegram Link: https://t.me/+EwxVjw15i7ZkMzQ1
-    ✅ Multi-event tracking: Lead, SubscribeCustom, Contact
+    ✅ Multi-event tracking: Lead, SubscribeCustom, Contact, CompleteRegistration
     ✅ Debouncing & duplicate protection included
 -->
 <script>
     (function() {
+        // Helper to show toast
+        function showToast(message, duration = 1500) {
+            const toast = document.getElementById('trackingToast');
+            if (toast) {
+                toast.textContent = message || '✅ Event tracked!';
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), duration);
+            }
+        }
+        
         // Ensure DOM is fully loaded before attaching events
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', initPixelTracking);
@@ -409,6 +448,8 @@
             const TELEGRAM_LINK = "https://t.me/+EwxVjw15i7ZkMzQ1";
             // CORRECT Facebook Pixel ID
             const PIXEL_ID = "1439827604565989";
+            // Brand Name
+            const BRAND_NAME = "GUJARATI_TRADER_JIGA_BHAI";
             
             // Helper: verify and fix href attributes for both buttons
             function validateTelegramLinks() {
@@ -430,6 +471,9 @@
                     link.setAttribute('rel', 'noopener noreferrer');
                 });
             }
+            
+            // Get device type
+            const deviceType = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ? 'mobile' : 'desktop';
             
             // Advanced tracking function for Pixel events
             function fireSubscribeTracking(buttonElement, clickEvent) {
@@ -457,7 +501,7 @@
                     try {
                         // PRIMARY EVENT: Track 'Lead' event for subscription (standard conversion)
                         fbq('track', 'Lead', {
-                            content_name: 'CA_NITIN_MURARKA_Telegram_Subscribe',
+                            content_name: `${BRAND_NAME}_Telegram_Subscribe`,
                             content_category: 'Stock_Market_Subscription',
                             button_location: buttonPosition,
                             cta_text: buttonTextContent,
@@ -466,19 +510,21 @@
                             value: 0.01,
                             session_id: sessionId,
                             timestamp: eventTimestamp,
-                            pixel_id: PIXEL_ID
+                            pixel_id: PIXEL_ID,
+                            brand: BRAND_NAME
                         });
                         
                         // SECONDARY EVENT: Custom Subscribe event for deeper insights
                         fbq('trackCustom', 'SubscribeButtonClick', {
-                            event_source: 'CA_NITIN_MURARKA_LandingPage_Official',
+                            event_source: `${BRAND_NAME}_LandingPage_Official`,
                             button_position: buttonPosition,
                             button_color: 'Red_Gradient',
                             click_timestamp: eventTimestamp,
                             channel_type: 'Telegram',
                             pixel_fire_version: '3.0',
-                            device_category: window.innerWidth <= 768 ? 'mobile' : 'desktop',
-                            page_url: window.location.href
+                            device_category: deviceType,
+                            page_url: window.location.href,
+                            brand: BRAND_NAME
                         });
                         
                         // ADDITIONAL EVENT: Track 'Contact' for high-intent subscribers
@@ -486,37 +532,66 @@
                             contact_method: 'Telegram_Channel_Join',
                             button_id: buttonElement.id,
                             page_section: buttonPosition.includes('Top') ? 'Hero_Section' : 'Footer_Section',
-                            channel_name: 'CA_NITIN_MURARKA_TRADING'
+                            channel_name: BRAND_NAME,
+                            brand: BRAND_NAME
                         });
                         
+                        // COMPLETE REGISTRATION Event for funnel tracking
+                        fbq('track', 'CompleteRegistration', {
+                            registration_method: 'Telegram_Subscribe_Button',
+                            content_name: `${BRAND_NAME}_Official_Channel`,
+                            status: 'joined',
+                            button_used: buttonTextContent,
+                            button_location: buttonPosition,
+                            channel_owner: BRAND_NAME,
+                            niche: 'Nifty_BankNifty_Stock_Options'
+                        });
+                        
+                        // Custom Event: JoinTelegramClick
+                        fbq('trackCustom', 'JoinTelegramClick', {
+                            event_source: `${BRAND_NAME}_LandingPage`,
+                            button_position: buttonPosition,
+                            button_name: buttonTextContent,
+                            url_destination: TELEGRAM_LINK,
+                            device_type: deviceType,
+                            timestamp_ms: Date.now(),
+                            pixel_version: 'v2_complete',
+                            brand: BRAND_NAME
+                        });
+                        
+                        // Custom Event: GujaratiTraderSubscription
+                        fbq('trackCustom', 'GujaratiTraderSubscription', {
+                            trader_level: 'all_levels',
+                            daily_signals: '5-6 observational calls',
+                            points_range: '200-400_points',
+                            channel_owner: 'JIGA_BHAI',
+                            nifty_banknifty: 'active',
+                            language: 'Gujarati_Hindi_English'
+                        });
+                        
+                        showToast(`✅ Subscribed! Pixel events tracked`, 1600);
                         console.log(`✅ Facebook Pixel Events Tracked Successfully | Pixel: ${PIXEL_ID}`);
-                        console.log(`   📍 Lead Event + SubscribeCustom + Contact`);
+                        console.log(`   📍 Lead + Contact + CompleteRegistration + SubscribeButtonClick + JoinTelegramClick + GujaratiTraderSubscription`);
                         console.log(`   🎯 Button Position: ${buttonPosition}`);
                         console.log(`   🔗 Telegram Link: ${TELEGRAM_LINK}`);
+                        console.log(`   🏷️ Brand: ${BRAND_NAME}`);
                     } catch (err) {
                         console.error('⚠️ Error firing Facebook Pixel events:', err);
                     }
                 } else {
                     console.warn(`⚠️ Facebook Pixel (fbq) not loaded. Event not tracked. Pixel ID: ${PIXEL_ID}`);
-                    // Fallback: store event in dataLayer for debugging if available
-                    if (window.dataLayer) {
-                        window.dataLayer.push({
-                            event: 'fb_pixel_missing',
-                            button_position: buttonPosition,
-                            telegram_link: TELEGRAM_LINK,
-                            pixel_id: PIXEL_ID
-                        });
-                    }
+                    showToast(`📱 Joining channel...`, 1200);
                 }
                 
                 // Console group for detailed analytics view
                 if (window.console && window.console.group) {
-                    console.group('📊 CA Nitin Murarka - Facebook Pixel Analytics');
+                    console.group('📊 GUJARATI TRADER (JIGA BHAI) - Facebook Pixel Analytics');
                     console.log(`✅ Button Clicked: ${buttonPosition}`);
                     console.log(`🎯 Pixel ID: ${PIXEL_ID}`);
                     console.log(`🔗 Telegram Invite: ${TELEGRAM_LINK}`);
                     console.log(`⏱️ Time: ${eventTimestamp}`);
-                    console.log(`📱 Device: ${window.innerWidth <= 768 ? 'Mobile' : 'Desktop'}`);
+                    console.log(`📱 Device: ${deviceType}`);
+                    console.log(`🏷️ Brand: ${BRAND_NAME}`);
                     console.groupEnd();
                 }
                 
@@ -549,13 +624,19 @@
                     isProcessing = true;
                     lastClickTime = now;
                     
+                    // Prevent default to ensure tracking fires first
+                    event.preventDefault();
+                    
                     // Fire the tracking pixel (Lead + Custom Events)
                     fireSubscribeTracking(button, event);
                     
-                    // Reset guard after debounce period
+                    // Small delay to ensure pixel events are sent
                     setTimeout(() => {
+                        if (button.href && button.href !== '#') {
+                            window.open(button.href, '_blank');
+                        }
                         isProcessing = false;
-                    }, DEBOUNCE_MS);
+                    }, 200);
                 });
                 
                 console.log(`✅ Tracking attached to: ${buttonName} | Pixel: ${PIXEL_ID}`);
@@ -580,7 +661,8 @@
                                 content_name: 'Generic_Telegram_Click_Global',
                                 source_element: anchor.innerText || 'Telegram Link',
                                 pixel_id: PIXEL_ID,
-                                location: 'global_tracking'
+                                location: 'global_tracking',
+                                brand: BRAND_NAME
                             });
                             console.log('✅ Additional Telegram link tracked globally');
                         }
@@ -594,6 +676,44 @@
             attachSecureTracking(bottomSubscribeBtn, 'Bottom Subscribe Button');
             attachGlobalTelegramTracking();
             
+            // Scroll depth tracking
+            let scrollTracked25 = false, scrollTracked50 = false, scrollTracked75 = false;
+            window.addEventListener('scroll', function() {
+                if (typeof fbq !== 'function') return;
+                const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+                if (scrollPercent >= 0.25 && !scrollTracked25) {
+                    scrollTracked25 = true;
+                    fbq('trackCustom', 'ScrollDepth', { depth_percent: 25, page: 'gujarati_trader_landing', pixel_id: PIXEL_ID, brand: BRAND_NAME });
+                    console.log('📊 Scroll 25% tracked');
+                }
+                if (scrollPercent >= 0.50 && !scrollTracked50) {
+                    scrollTracked50 = true;
+                    fbq('trackCustom', 'ScrollDepth', { depth_percent: 50, page: 'gujarati_trader_landing', pixel_id: PIXEL_ID, brand: BRAND_NAME });
+                    console.log('📊 Scroll 50% tracked');
+                }
+                if (scrollPercent >= 0.75 && !scrollTracked75) {
+                    scrollTracked75 = true;
+                    fbq('trackCustom', 'ScrollDepth', { depth_percent: 75, page: 'gujarati_trader_landing', pixel_id: PIXEL_ID, brand: BRAND_NAME });
+                    console.log('📊 Scroll 75% tracked');
+                }
+            });
+            
+            // Time on page tracking
+            let sessionStart = Date.now();
+            window.addEventListener('beforeunload', function() {
+                if (typeof fbq !== 'function') return;
+                const timeSpent = Math.floor((Date.now() - sessionStart) / 1000);
+                if (timeSpent > 5) {
+                    fbq('trackCustom', 'TimeOnPage', {
+                        duration_seconds: timeSpent,
+                        page_type: 'Telegram_Subscribe_Official',
+                        pixel_id: PIXEL_ID,
+                        brand: BRAND_NAME
+                    });
+                    console.log(`⏱️ Time on page: ${timeSpent}s`);
+                }
+            });
+            
             // Enhanced PageView tracking after load with additional metadata
             if (typeof fbq === 'function') {
                 fbq('track', 'PageView', {
@@ -603,13 +723,15 @@
                     button_style: 'Red_Gradient_Linear',
                     timestamp_load: new Date().toISOString(),
                     pixel_version: 'complete_integration',
-                    page_language: 'hindi_english'
+                    page_language: 'gujarati_hindi_english',
+                    brand: BRAND_NAME
                 });
                 console.log(`📄 Enhanced PageView tracked | Pixel ID: ${PIXEL_ID}`);
-                console.log(`🔥 CA NITIN MURARKA TRADING | Facebook Pixel Tracking ACTIVE 🔥`);
-                console.log(`✅ Both "SUBSCRIBE NOW" buttons will fire: Lead, SubscribeCustom, Contact events`);
+                console.log(`🔥 GUJARATI TRADER (JIGA BHAI) | Facebook Pixel Tracking ACTIVE 🔥`);
+                console.log(`✅ Both "SUBSCRIBE NOW" buttons will fire: Lead, Contact, CompleteRegistration, SubscribeButtonClick, JoinTelegramClick, GujaratiTraderSubscription`);
                 console.log(`✅ CORRECT Pixel ID: ${PIXEL_ID}`);
                 console.log(`✅ Telegram Channel: ${TELEGRAM_LINK}`);
+                console.log(`✅ Brand: ${BRAND_NAME}`);
             } else {
                 console.error(`❌ Facebook Pixel not initialized. Pixel ID ${PIXEL_ID} may be incorrect or blocked.`);
             }
@@ -626,6 +748,7 @@
             const bottomBtn = document.getElementById('subscribeBottomBtn');
             const expectedUrl = "https://t.me/+EwxVjw15i7ZkMzQ1";
             const correctPixelId = "1439827604565989";
+            const brandName = "GUJARATI TRADER (JIGA BHAI)";
             
             // Final verification of Telegram links
             if (topBtn && topBtn.href !== expectedUrl) {
@@ -642,7 +765,7 @@
             if (logoImg) {
                 logoImg.onerror = function() {
                     this.style.opacity = '0.6';
-                    this.alt = 'CA Nitin Murarka Official Logo';
+                    this.alt = `${brandName} Official Logo`;
                     console.log("⚠️ Logo image fallback activated");
                 };
             }
@@ -654,17 +777,19 @@
                     status: 'active', 
                     pixel_id: correctPixelId,
                     timestamp: new Date().toISOString(),
-                    page_loaded: true
+                    page_loaded: true,
+                    brand: brandName.replace(/\s/g, '_')
                 });
             } else {
                 console.warn(`⚠️ Facebook Pixel not available after page load. Check Pixel ID: ${correctPixelId}`);
             }
             
             // Log final confirmation for developer
-            console.log("%c🔥 CA NITIN MURARKA TRADING | FINAL CODE WITH CORRECT PIXEL ID 🔥", "color: #ff5555; font-weight: bold; font-size: 14px;");
+            console.log("%c🔥 GUJARATI TRADER (JIGA BHAI) | FINAL CODE WITH CORRECT PIXEL ID 🔥", "color: #ff5555; font-weight: bold; font-size: 14px;");
             console.log(`✅ Pixel ID: ${correctPixelId}`);
             console.log(`✅ Telegram Invite: ${expectedUrl}`);
-            console.log(`✅ Both Subscribe Buttons Track Lead + Contact + Custom Events`);
+            console.log(`✅ Brand Name: ${brandName}`);
+            console.log(`✅ Both Subscribe Buttons Tracked: Lead + Contact + CompleteRegistration + Custom Events`);
         });
     })();
 </script>
