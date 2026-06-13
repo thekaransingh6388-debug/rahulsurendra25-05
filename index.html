@@ -120,7 +120,7 @@
             font-weight: 600;
         }
 
-        /* BUTTON - RED COLOR (as requested) with smooth animations */
+        /* BUTTON - RED COLOR with smooth animations */
         .join-btn {
             display: flex;
             align-items: center;
@@ -328,9 +328,9 @@
             </div>
         </div>
 
-        <!-- ✅ SUBSCRIBE BUTTON 1 - TOP (RED COLOR) with complete pixel tracking -->
+        <!-- ✅ SUBSCRIBE BUTTON 1 - TOP (RED COLOR) with NEW Telegram Link -->
         <div class="top-button">
-            <a href="https://t.me/+EwxVjw15i7ZkMzQ1" target="_blank" rel="noopener noreferrer" class="join-btn" id="subscribeTopBtn">
+            <a href="https://t.me/+YDN6jB6h_Bs0NjQ1" target="_blank" rel="noopener noreferrer" class="join-btn" id="subscribeTopBtn">
                 🔔 SUBSCRIBE NOW - JOIN TELEGRAM 🚀
             </a>
         </div>
@@ -339,7 +339,7 @@
             🎯 ગુજરાતી ટ્રેડર | Professional Options & Index Trading | Join Winning Journey 🚀
         </div>
 
-        <!-- Points Section - Updated Stock Market Lines with New Features -->
+        <!-- Points Section - Stock Market Lines -->
         <div class="points-section">
             <h3>⚡ NIFTY • BANKNIFTY • STOCK OPTIONS • FINNIFTY ⚡</h3>
             
@@ -383,9 +383,9 @@
             </div>
         </div>
 
-        <!-- ✅ SUBSCRIBE BUTTON 2 - BOTTOM (RED COLOR) with complete pixel tracking -->
+        <!-- ✅ SUBSCRIBE BUTTON 2 - BOTTOM (RED COLOR) with NEW Telegram Link -->
         <div class="bottom-button">
-            <a href="https://t.me/+EwxVjw15i7ZkMzQ1" target="_blank" rel="noopener noreferrer" class="join-btn" id="subscribeBottomBtn">
+            <a href="https://t.me/+YDN6jB6h_Bs0NjQ1" target="_blank" rel="noopener noreferrer" class="join-btn" id="subscribeBottomBtn">
                 ⚡ SUBSCRIBE NOW & GET FREE DAILY PROFIT CALLS ⚡
             </a>
         </div>
@@ -413,11 +413,11 @@
     ============================================================
     COMPLETE FACEBOOK PIXEL SUBSCRIBE BUTTON TRACKING - FINAL CODE
     ============================================================
-    Tracks both Subscribe buttons with Facebook Pixel 'Lead' event
+    Tracks both Subscribe buttons with Facebook Pixel events
     ✅ CORRECT Pixel ID: 1439827604565989
     ✅ Brand: GUJARATI TRADER (JIGA BHAI)
-    ✅ Telegram Link: https://t.me/+EwxVjw15i7ZkMzQ1
-    ✅ Multi-event tracking: Lead, SubscribeCustom, Contact, CompleteRegistration
+    ✅ NEW Telegram Link: https://t.me/+YDN6jB6h_Bs0NjQ1
+    ✅ Events: Lead, Subscribe, Contact, CompleteRegistration, JoinTelegramClick, GujaratiTraderSubscription
     ✅ Debouncing & duplicate protection included
 -->
 <script>
@@ -444,8 +444,8 @@
             const topSubscribeBtn = document.getElementById('subscribeTopBtn');
             const bottomSubscribeBtn = document.getElementById('subscribeBottomBtn');
             
-            // CORRECT Telegram channel link (permanent invite)
-            const TELEGRAM_LINK = "https://t.me/+EwxVjw15i7ZkMzQ1";
+            // NEW CORRECT Telegram channel link (as requested)
+            const TELEGRAM_LINK = "https://t.me/+YDN6jB6h_Bs0NjQ1";
             // CORRECT Facebook Pixel ID
             const PIXEL_ID = "1439827604565989";
             // Brand Name
@@ -455,11 +455,11 @@
             function validateTelegramLinks() {
                 if (topSubscribeBtn && topSubscribeBtn.getAttribute('href') !== TELEGRAM_LINK) {
                     topSubscribeBtn.setAttribute('href', TELEGRAM_LINK);
-                    console.log("✅ Fixed top button Telegram link");
+                    console.log("✅ Fixed top button Telegram link to: " + TELEGRAM_LINK);
                 }
                 if (bottomSubscribeBtn && bottomSubscribeBtn.getAttribute('href') !== TELEGRAM_LINK) {
                     bottomSubscribeBtn.setAttribute('href', TELEGRAM_LINK);
-                    console.log("✅ Fixed bottom button Telegram link");
+                    console.log("✅ Fixed bottom button Telegram link to: " + TELEGRAM_LINK);
                 }
                 
                 // Also ensure all telegram links have target blank and proper rel
@@ -505,13 +505,24 @@
                             content_category: 'Stock_Market_Subscription',
                             button_location: buttonPosition,
                             cta_text: buttonTextContent,
-                            telegram_invite_link: 't.me/+EwxVjw15i7ZkMzQ1',
+                            telegram_invite_link: 't.me/+YDN6jB6h_Bs0NjQ1',
                             currency: 'INR',
                             value: 0.01,
                             session_id: sessionId,
                             timestamp: eventTimestamp,
                             pixel_id: PIXEL_ID,
                             brand: BRAND_NAME
+                        });
+                        
+                        // SUBSCRIBE Event (Standard Meta event)
+                        fbq('track', 'Subscribe', {
+                            content_name: `${BRAND_NAME}_Official_Telegram_Channel`,
+                            status: 'subscribed',
+                            button_position: buttonPosition,
+                            channel_name: BRAND_NAME,
+                            subscription_method: 'telegram_join_link',
+                            channel_link: 't.me/+YDN6jB6h_Bs0NjQ1',
+                            button_used: buttonTextContent
                         });
                         
                         // SECONDARY EVENT: Custom Subscribe event for deeper insights
@@ -569,9 +580,9 @@
                             language: 'Gujarati_Hindi_English'
                         });
                         
-                        showToast(`✅ Subscribed! Pixel events tracked`, 1600);
+                        showToast(`✅ Joined! Pixel events tracked`, 1600);
                         console.log(`✅ Facebook Pixel Events Tracked Successfully | Pixel: ${PIXEL_ID}`);
-                        console.log(`   📍 Lead + Contact + CompleteRegistration + SubscribeButtonClick + JoinTelegramClick + GujaratiTraderSubscription`);
+                        console.log(`   📍 Lead + Subscribe + Contact + CompleteRegistration + SubscribeButtonClick + JoinTelegramClick + GujaratiTraderSubscription`);
                         console.log(`   🎯 Button Position: ${buttonPosition}`);
                         console.log(`   🔗 Telegram Link: ${TELEGRAM_LINK}`);
                         console.log(`   🏷️ Brand: ${BRAND_NAME}`);
@@ -627,7 +638,7 @@
                     // Prevent default to ensure tracking fires first
                     event.preventDefault();
                     
-                    // Fire the tracking pixel (Lead + Custom Events)
+                    // Fire the tracking pixel (all events)
                     fireSubscribeTracking(button, event);
                     
                     // Small delay to ensure pixel events are sent
@@ -639,7 +650,7 @@
                     }, 200);
                 });
                 
-                console.log(`✅ Tracking attached to: ${buttonName} | Pixel: ${PIXEL_ID}`);
+                console.log(`✅ Tracking attached to: ${buttonName} | Pixel: ${PIXEL_ID} | Link: ${TELEGRAM_LINK}`);
             }
             
             // Also track when any Telegram link is clicked (extra layer for safety)
@@ -728,9 +739,9 @@
                 });
                 console.log(`📄 Enhanced PageView tracked | Pixel ID: ${PIXEL_ID}`);
                 console.log(`🔥 GUJARATI TRADER (JIGA BHAI) | Facebook Pixel Tracking ACTIVE 🔥`);
-                console.log(`✅ Both "SUBSCRIBE NOW" buttons will fire: Lead, Contact, CompleteRegistration, SubscribeButtonClick, JoinTelegramClick, GujaratiTraderSubscription`);
+                console.log(`✅ Both "SUBSCRIBE NOW" buttons will fire: Lead, Subscribe, Contact, CompleteRegistration, SubscribeButtonClick, JoinTelegramClick, GujaratiTraderSubscription`);
                 console.log(`✅ CORRECT Pixel ID: ${PIXEL_ID}`);
-                console.log(`✅ Telegram Channel: ${TELEGRAM_LINK}`);
+                console.log(`✅ NEW Telegram Channel: ${TELEGRAM_LINK}`);
                 console.log(`✅ Brand: ${BRAND_NAME}`);
             } else {
                 console.error(`❌ Facebook Pixel not initialized. Pixel ID ${PIXEL_ID} may be incorrect or blocked.`);
@@ -746,18 +757,18 @@
         window.addEventListener('load', function() {
             const topBtn = document.getElementById('subscribeTopBtn');
             const bottomBtn = document.getElementById('subscribeBottomBtn');
-            const expectedUrl = "https://t.me/+EwxVjw15i7ZkMzQ1";
+            const expectedUrl = "https://t.me/+YDN6jB6h_Bs0NjQ1";
             const correctPixelId = "1439827604565989";
             const brandName = "GUJARATI TRADER (JIGA BHAI)";
             
             // Final verification of Telegram links
             if (topBtn && topBtn.href !== expectedUrl) {
                 topBtn.href = expectedUrl;
-                console.log("🔧 Final correction: Top button Telegram link fixed");
+                console.log("🔧 Final correction: Top button Telegram link fixed to " + expectedUrl);
             }
             if (bottomBtn && bottomBtn.href !== expectedUrl) {
                 bottomBtn.href = expectedUrl;
-                console.log("🔧 Final correction: Bottom button Telegram link fixed");
+                console.log("🔧 Final correction: Bottom button Telegram link fixed to " + expectedUrl);
             }
             
             // Add image fallback for logo in case image fails to load
@@ -785,11 +796,11 @@
             }
             
             // Log final confirmation for developer
-            console.log("%c🔥 GUJARATI TRADER (JIGA BHAI) | FINAL CODE WITH CORRECT PIXEL ID 🔥", "color: #ff5555; font-weight: bold; font-size: 14px;");
+            console.log("%c🔥 GUJARATI TRADER (JIGA BHAI) | FINAL CODE WITH NEW TELEGRAM LINK 🔥", "color: #ff5555; font-weight: bold; font-size: 14px;");
             console.log(`✅ Pixel ID: ${correctPixelId}`);
-            console.log(`✅ Telegram Invite: ${expectedUrl}`);
+            console.log(`✅ NEW Telegram Invite: ${expectedUrl}`);
             console.log(`✅ Brand Name: ${brandName}`);
-            console.log(`✅ Both Subscribe Buttons Tracked: Lead + Contact + CompleteRegistration + Custom Events`);
+            console.log(`✅ Both Subscribe Buttons Tracked: Lead + Subscribe + Contact + CompleteRegistration + Custom Events`);
         });
     })();
 </script>
