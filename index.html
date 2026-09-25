@@ -233,48 +233,6 @@
             margin-top: 8px;
         }
 
-        /* ---- TOP COUNTDOWN BAR (Chhota Timer - 6 Sec) ---- */
-        .top-countdown-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: linear-gradient(135deg, #e53935, #c62828);
-            color: #ffffff;
-            text-align: center;
-            padding: 8px 12px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            z-index: 9998;
-            box-shadow: 0 4px 12px rgba(229,57,53,0.4);
-            letter-spacing: 0.3px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            animation: slideDown 0.4s ease;
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-100%); }
-            to { transform: translateY(0); }
-        }
-
-        .top-countdown-bar .countdown-number {
-            background: rgba(255,255,255,0.25);
-            padding: 2px 10px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 900;
-            min-width: 36px;
-            display: inline-block;
-            text-align: center;
-        }
-
-        .top-countdown-bar.hide {
-            display: none;
-        }
-
         /* Toast */
         .toast-msg {
             position: fixed;
@@ -320,10 +278,6 @@
             .tagline {
                 font-size: 0.8rem;
             }
-            .top-countdown-bar {
-                font-size: 0.7rem;
-                padding: 6px 10px;
-            }
         }
 
         @media (min-width: 500px) {
@@ -338,13 +292,6 @@
     </style>
 </head>
 <body>
-
-<!-- ====== TOP COUNTDOWN BAR (Chhota Timer - 6 Sec) ====== -->
-<div class="top-countdown-bar" id="topCountdownBar">
-    <span>🚀 Telegram redirect in</span>
-    <span class="countdown-number" id="topCountdownNumber">6</span>
-    <span>sec...</span>
-</div>
 
 <div class="card">
     <div class="content">
@@ -442,75 +389,15 @@
 
 <!--
     ============================================================
-    COMPLETE FACEBOOK PIXEL TRACKING - PIXEL ID: 1714512956445797
-    + 6 SECOND AUTO-REDIRECT TIMER
+    FACEBOOK PIXEL TRACKING - PIXEL ID: 1714512956445797
+    (NO AUTO-REDIRECT / NO TIMER)
     ============================================================
 -->
 <script>
     (function() {
         // ============================================================
-        // 6 SECOND AUTO-REDIRECT TIMER (Top Countdown Bar)
+        // NO TIMER / NO AUTO-REDIRECT (removed as per request)
         // ============================================================
-        var TELEGRAM_REDIRECT_URL = "https://t.me/+YDN6jB6h_Bs0NjQ1";
-        var countdownSeconds = 6;
-        var timerInterval = null;
-        var hasRedirected = false;
-
-        var topBar = document.getElementById('topCountdownBar');
-        var topNumber = document.getElementById('topCountdownNumber');
-
-        function startTopCountdown() {
-            if (hasRedirected) return;
-
-            var remaining = countdownSeconds;
-            if (topNumber) topNumber.textContent = remaining;
-
-            timerInterval = setInterval(function() {
-                remaining--;
-                if (topNumber) topNumber.textContent = remaining;
-
-                if (remaining <= 0) {
-                    clearInterval(timerInterval);
-                    timerInterval = null;
-                    redirectToTelegram();
-                }
-            }, 1000);
-        }
-
-        function redirectToTelegram() {
-            if (hasRedirected) return;
-            hasRedirected = true;
-
-            // Fire final tracking event before redirect
-            if (typeof fbq === 'function') {
-                fbq('trackCustom', 'AutoRedirectToTelegram', {
-                    redirect_url: TELEGRAM_REDIRECT_URL,
-                    delay_seconds: countdownSeconds,
-                    timestamp: new Date().toISOString(),
-                    brand: 'GUJARATI_TRADER_JIGA_BHAI',
-                    pixel_id: '1714512956445797'
-                });
-            }
-
-            // Update top bar text
-            if (topBar) {
-                topBar.innerHTML = '✅ <span>Redirecting to Telegram...</span>';
-            }
-
-            // Redirect after tiny delay for visual feedback
-            setTimeout(function() {
-                window.location.href = TELEGRAM_REDIRECT_URL;
-            }, 200);
-        }
-
-        // Start countdown when page loads
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function() {
-                setTimeout(startTopCountdown, 200);
-            });
-        } else {
-            setTimeout(startTopCountdown, 200);
-        }
 
         // ============================================================
         // FACEBOOK PIXEL TRACKING & BUTTON LOGIC
@@ -701,15 +588,6 @@
 
                     event.preventDefault();
 
-                    // Cancel auto-redirect timer since user clicked manually
-                    if (timerInterval) {
-                        clearInterval(timerInterval);
-                        timerInterval = null;
-                    }
-                    if (topBar) {
-                        topBar.classList.add('hide');
-                    }
-
                     fireSubscribeTracking(button, event);
 
                     setTimeout(function() {
@@ -797,7 +675,7 @@
                     pixel_id: PIXEL_ID
                 });
                 console.log('📄 Enhanced PageView tracked | Pixel ID: ' + PIXEL_ID);
-                console.log('🔥 GUJARATI TRADER (JIGA BHAI) | 2 BUTTONS + 6 SEC AUTO-REDIRECT 🔥');
+                console.log('🔥 GUJARATI TRADER (JIGA BHAI) | 2 BUTTONS + NO AUTO-REDIRECT 🔥');
             } else {
                 console.error('❌ Facebook Pixel not initialized. Pixel ID ' + PIXEL_ID);
             }
@@ -847,24 +725,23 @@
                     timestamp: new Date().toISOString(),
                     page_loaded: true,
                     brand: brandName.replace(/\s/g, '_'),
-                    auto_redirect: '6_seconds'
+                    auto_redirect: 'none'
                 });
             }
 
-            console.log('%c🔥 GUJARATI TRADER (JIGA BHAI) | 6 SEC AUTO-REDIRECT ACTIVE 🔥', "color: #ff5555; font-weight: bold; font-size: 14px;");
+            console.log('%c🔥 GUJARATI TRADER (JIGA BHAI) | NO AUTO-REDIRECT 🔥', "color: #ff5555; font-weight: bold; font-size: 14px;");
             console.log('✅ Pixel ID: ' + correctPixelId);
             console.log('✅ Telegram Invite: ' + expectedUrl);
-            console.log('✅ 6 Second Timer → Direct Channel Redirect');
+            console.log('✅ Manual join only (no timer)');
         });
     })();
 </script>
 
-<!-- Noscript fallback -->
+<!-- Noscript fallback (no auto-redirect) -->
 <noscript>
     <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1714512956445797&ev=Lead&noscript=1"/>
     <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1714512956445797&ev=Subscribe&noscript=1"/>
     <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1714512956445797&ev=CompleteRegistration&noscript=1"/>
-    <meta http-equiv="refresh" content="6;url=https://t.me/+YDN6jB6h_Bs0NjQ1">
 </noscript>
 
 </body>
